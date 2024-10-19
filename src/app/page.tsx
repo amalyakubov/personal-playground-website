@@ -1,101 +1,287 @@
+"use client";
 import Image from "next/image";
+import heroBanner from "../../public/assets/images/tanya-prodaan-63g0rwti9uU-unsplash.jpg";
+import { Header } from "@/components/Header";
+import Lenis from "lenis";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Footer } from "@/components/footer";
+import { DropdownMenu } from "@/components/DropdownMenu";
 
-export default function Home() {
+import image1 from "../../public/assets/images/thom-bradley-0N5YRJgb0js-unsplash.jpg";
+import image2 from "../../public/assets/images/melloo-KYM3UF3C-eg-unsplash.jpg";
+import image3 from "../../public/assets/images/katt-galvan-iP1iaQqOTNw-unsplash.jpg";
+import image4 from "../../public/assets/images/milin-john-_3kCOGsSjVQ-unsplash.jpg";
+import { Space_Grotesk } from "next/font/google";
+
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
+
+const Typewriter = ({
+  text,
+  delay,
+  ...props
+}: {
+  text: string;
+  delay: number;
+}) => {
+  const [currentText, setCurrentText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setCurrentText((prev) => prev + text[currentIndex]);
+        setCurrentIndex((currentIndex) => currentIndex + 1);
+      }, delay);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, currentText, delay]);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <motion.p className={"typewriter"} {...props}>
+      {currentText}
+    </motion.p>
+  );
+};
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+// Function to generate a random uppercase letter
+const getRandomLetter = (): string => {
+  const charCode = Math.floor(Math.random() * 94) + 33; // ASCII A-Z
+  return String.fromCharCode(charCode);
+};
+
+const gargledText = (text: string): string => {
+  if (text.length === 0) return "";
+  if (text.length === 1) return getRandomLetter();
+
+  // Extract the last character
+  const lastChar = text[text.length - 1];
+
+  // Transform all characters except the last one
+  const transformedText = text
+    .slice(0, -1)
+    .split("")
+    .map(() => getRandomLetter())
+    .join("");
+
+  // Append the last character
+  return transformedText + lastChar;
+};
+
+const MotionDiv = (props: any) => {
+  return <motion.div {...props}></motion.div>;
+};
+
+type GlitchyTypewriterProps = {
+  text: string;
+  delay: number;
+  [key: string]: unknown;
+};
+
+const GlitchyTypewriter: React.FC<GlitchyTypewriterProps> = ({
+  text,
+  delay,
+  ...props
+}) => {
+  const [currentText, setCurrentText] = useState<string>("");
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        const nextIndex = currentIndex + 1;
+        const substring = text.slice(0, nextIndex);
+        const transformed = gargledText(substring);
+        setCurrentText(transformed);
+        setCurrentIndex(nextIndex);
+      }, delay);
+
+      return () => clearTimeout(timeout);
+    }
+    if (currentIndex === text.length) {
+      let resultingText = currentText.split("");
+      for (let i = 0; i < currentIndex; i++) {
+        setTimeout(() => {
+          resultingText[i] = text.split("")[i];
+          console.log(text);
+          console.log("resulting Text", resultingText);
+          setCurrentText(resultingText.join(""));
+        }, i * 60);
+      }
+    }
+  }, [currentIndex, text, delay]);
+
+  return (
+    <motion.p className="typewriter" {...props}>
+      {currentText}
+    </motion.p>
+  );
+};
+const Home = () => {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+  return (
+    <div className={"page-container px-14  w-screen selection:bg-amber-300"}>
+      <Header />
+      <div className={"grid grid-cols-2 w-screen gap-9 "}>
+        <div id={"col-1"}>
+          <MotionDiv
+            initial={{ opacity: 0, x: -300 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            whileHover={{
+              scale: 1.03,
+            }}
           >
             <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src={heroBanner}
+              alt={"asdasd"}
+              className={"pt-16 size-12/12"}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </MotionDiv>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <MotionDiv
+          initial={{ opacity: 0, x: -300 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <div id={"col-2"}>
+            <GlitchyTypewriter
+              text={"Hello, World!"}
+              delay={80}
+              className={`text-8xl pt-16 px-9 pl-12 ${spaceGrotesk.className}`}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+
+            <p className={"pt-5 text-2xl leading-relaxed  pr-44 px-14"}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+              imperdiet enim eget magna pretium tristique. In tincidunt mi nec
+              enim gravida, ut dictum arcu tincidunt. Praesent eget pretium
+              massa, et laoreet sem. Aliquam blandit imperdiet erat in finibus.
+              Quisque iaculis libero nisl, elementum varius lectus finibus
+              vitae. Mauris nec ligula mollis, pharetra tellus sed, ornare
+              purus. Nam quis ex vitae nisi suscipit dictum et et lectus. Donec
+              a tincidunt felis. Integer at pulvinar dolor. Pellentesque
+              habitant morbi tristique senectus et netus et malesuada fames ac
+              turpis egestas. Pellentesque tristique, diam id feugiat
+              vestibulum, risus nisl maximus est, vel tincidunt risus ligula
+              eget urna. Vivamus maximus, felis sed tincidunt lobortis, velit
+              purus congue arcu, sit amet faucibus urna massa et odio. <br />
+              <br />
+              Integer eget elit elit. Nullam sed tellus nisl. Nullam vel ornare
+              dolor. Fusce eu pharetra metus. Etiam vitae lorem elit. Aliquam
+              nec consequat leo. Quisque ultricies leo a ipsum accumsan tempus.
+              Nam non bibendum ante. Integer sit amet tincidunt metus. Praesent
+              dignissim, enim eu euismod tincidunt, elit lacus rutrum libero,
+              sit amet tincidunt ante nulla a felis. Vestibulum hendrerit urna
+              lorem, nec aliquam dolor porta ut. Phasellus rutrum nisl eu libero
+              tincidunt, id eleifend massa feugiat. In eu purus dictum nisi
+              tincidunt laoreet nec vitae turpis. Mauris eu fringilla lectus, at
+              feugiat mi. Praesent aliquam maximus libero, fringilla suscipit
+              mauris cursus eu. Nulla tortor augue, rutrum condimentum tortor
+              vitae, pellentesque congue risus. Cras ac arcu id lacus luctus
+              ultrices. Curabitur ut sollicitudin risus.
+            </p>
+          </div>
+        </MotionDiv>
+      </div>
+      <GalleryOfImages />
     </div>
   );
-}
+};
+
+const GalleryOfImages = () => {
+  return (
+    <>
+      <p className={"pl-20 text-8xl pb-16 pt-[5vh]"}>
+        We are <i>artisans</i> of fotography
+      </p>
+      <div id={"flex-box-container"} className={"flex flex-row  "}>
+        <p className={"text-2xl w-[30vw] leading-relaxed"}>
+          We set sail on this new sea because there is new knowledge to be
+          gained, and new rights to be won, and they must be won and used for
+          the progress of all people. For space science, like nuclear science
+          and all technology, has no conscience of its own. Whether it will
+          become a force for good or ill depends on man, and only if the United
+          States occupies a position of pre-eminence can we help decide whether
+          this new ocean will be a sea of peace or a new terrifying theater of
+          war. I do not say that we should or will go unprotected against the
+          hostile misuse of space any more than we go unprotected against the
+          hostile use of land or sea, but I do say that space can be explored
+          and mastered without feeding the fires of war, without repeating the
+          mistakes that man has made in extending his writ around this globe of
+          ours. There is no strife, no prejudice, no national conflict in outer
+          space as yet. Its hazards are hostile to us all. <br />
+          <br />
+          Its conquest deserves the best of all mankind, and its opportunity for
+          peaceful cooperation may never come again. But why, some say, the
+          Moon? Why choose this as our goal? And they may well ask, why climb
+          the highest mountain? Why, 35 years ago, fly the Atlantic? Why does
+          Rice play Texas? We choose to go to the Moon. We choose to go to the
+          Moon... We choose to go to the Moon in this decade and do the other
+          things, not because they are easy, but because they are hard; because
+          that goal will serve to organize and measure the best of our energies
+          and skills, because that challenge is one that we are willing to
+          accept, one we are unwilling to postpone, and one we intend to win,
+          and the others, too.
+        </p>
+
+        <div
+          className={"grid grid-cols-2 gap-5 pl-20  pr-20 text-2xl w-[80%]  "}
+        >
+          <Image
+            src={image1}
+            alt={"image1"}
+            className={"drop-shadow-2xl shadow-amber-800 col-start-1"}
+          />
+          <Image
+            src={image2}
+            alt={"image2"}
+            className={
+              "flex col-start-2 drop-shadow-2xl object-cover object-center h-full"
+            }
+          />
+          <Image
+            src={image3}
+            alt={"image3"}
+            className={"col-start-1 drop-shadow-2xl row-start-1 "}
+          />
+          <Image
+            src={image4}
+            alt={"image4"}
+            className={
+              "col-start-2 row-start-1 drop-shadow-2xl h-full object-cover object-center "
+            }
+          />
+        </div>
+      </div>
+      <DropdownMenu className={"w-max pr-20 bg-red"} />
+      <Footer />
+    </>
+  );
+};
+
+const Emoji = (props: { label?: string; symbol: string }) => {
+  return (
+    <span
+      className="emoji"
+      role="img"
+      aria-label={props.label ? props.label : ""}
+      aria-hidden={props.label ? "false" : "true"}
+    >
+      {props.symbol}
+    </span>
+  );
+};
+
+export default Home;
+export { Typewriter, GlitchyTypewriter, spaceGrotesk };
