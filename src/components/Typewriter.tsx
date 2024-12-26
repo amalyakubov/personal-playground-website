@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+type GlitchyTypewriterProps = {
+  text: string;
+  delay: number;
+  [key: string]: unknown;
+};
+
 const getRandomLetter = (): string => {
   const charCode = Math.floor(Math.random() * 94) + 33; // ASCII A-Z
   return String.fromCharCode(charCode);
