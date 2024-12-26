@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
-const DropdownMenu = ({ className, ...props }) => {
+const DropdownMenu = ({ className, ...props }: { className?: string }) => {
   return (
     <div
       {...props}
