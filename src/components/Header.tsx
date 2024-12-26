@@ -7,8 +7,12 @@ type HeaderProps = {
 export const Header = () => {
   return (
     <>
-      <header className={"flex px-14 justify-between text-xl pt-4 p-9"}>
-        <p className={"pr-14"}>WOO</p>
+      <header
+        className={
+          "flex  justify-between text-xl py-8 p-9 border-4 border-t-0 border-black mb-20"
+        }
+      >
+        <p className={"pr-14 font-bold"}>WOO</p>
         <ol className={"flex flex-row gap-9"}>
           <li>
             <a>Home</a>

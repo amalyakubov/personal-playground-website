@@ -5,33 +5,18 @@ const DropdownMenu = ({ className, ...props }) => {
   return (
     <div
       {...props}
-      className={`p-9 bg-slate-200 mt-9 rounded-2xl pb-4 drop-shadow-xl ${className || ""}`}
+      className={`p-9 bg-slate-200 dark:text-black mt-9 rounded-2xl rounded-b-none pb-4 drop-shadow-xl ${className || ""}`}
     >
       <ul>
-        <DropDownListItem
-          title="Tallinn"
-          content="Tallinn is the capital of Estonia"
-        />
-        <DropDownListItem
-          title="Stockholm"
-          content="Stockholm is the capital of Sweden"
-        />
-        <DropDownListItem
-          title="Copenhagen"
-          content="Copenhagen is the capital of Denmark"
-        />
+        <DropDownListItem title="Tallinn" content="Tallinn is the capital of Estonia" />
+        <DropDownListItem title="Stockholm" content="Stockholm is the capital of Sweden" />
+        <DropDownListItem title="Copenhagen" content="Copenhagen is the capital of Denmark" />
       </ul>
     </div>
   );
 };
 
-const DropDownListItem = ({
-  content,
-  title,
-}: {
-  content: string;
-  title: string;
-}) => {
+const DropDownListItem = ({ content, title }: { content: string; title: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -40,10 +25,7 @@ const DropDownListItem = ({
 
   return (
     <div>
-      <li
-        onClick={handleClick}
-        className="text-2xl font-bolder bg-slate-200 cursor-pointer mb-2"
-      >
+      <li onClick={handleClick} className="text-2xl font-bolder bg-slate-200 cursor-pointer mb-2">
         {title}
         <AnimatePresence>
           {isOpen && (
