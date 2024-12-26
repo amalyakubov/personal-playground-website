@@ -8,15 +8,12 @@ const DropdownMenu = ({ className, ...props }) => {
       className={`p-9 bg-slate-200 dark:text-black mt-9 rounded-2xl rounded-b-none pb-4 drop-shadow-xl ${className || ""}`}
     >
       <ul>
-        <DropDownListItem title="Tallinn" content="Tallinn is the capital of Estonia" />
-        <DropDownListItem title="Stockholm" content="Stockholm is the capital of Sweden" />
-        <DropDownListItem title="Copenhagen" content="Copenhagen is the capital of Denmark" />
+        <DropDownListItem title="Contact me:" content={<a href="https://github.com/amalyakubov">Git Hub</a>} />
       </ul>
     </div>
   );
 };
-
-const DropDownListItem = ({ content, title }: { content: string; title: string }) => {
+const DropDownListItem = ({ content, title }: { content: React.ReactNode; title: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {

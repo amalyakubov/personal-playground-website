@@ -6,59 +6,13 @@ import Lenis from "lenis";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Footer } from "@/components/Footer";
+import { GlitchyTypewriter } from "@/components/Typewriter";
 import { DropdownMenu } from "@/components/DropdownMenu";
-
 import image1 from "../../public/assets/images/thom-bradley-0N5YRJgb0js-unsplash.jpg";
 import image2 from "../../public/assets/images/melloo-KYM3UF3C-eg-unsplash.jpg";
 import image3 from "../../public/assets/images/katt-galvan-iP1iaQqOTNw-unsplash.jpg";
 import image4 from "../../public/assets/images/milin-john-_3kCOGsSjVQ-unsplash.jpg";
 import { Space_Grotesk } from "next/font/google";
-
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
-
-const Typewriter = ({ text, delay, ...props }: { text: string; delay: number }) => {
-  const [currentText, setCurrentText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setCurrentText((prev) => prev + text[currentIndex]);
-        setCurrentIndex((currentIndex) => currentIndex + 1);
-      }, delay);
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, currentText, delay]);
-  return (
-    <motion.p className={"typewriter"} {...props}>
-      {currentText}
-    </motion.p>
-  );
-};
-
-// Function to generate a random uppercase letter
-const getRandomLetter = (): string => {
-  const charCode = Math.floor(Math.random() * 94) + 33; // ASCII A-Z
-  return String.fromCharCode(charCode);
-};
-
-const gargledText = (text: string): string => {
-  if (text.length === 0) return "";
-  if (text.length === 1) return getRandomLetter();
-
-  // Extract the last character
-  const lastChar = text[text.length - 1];
-
-  // Transform all characters except the last one
-  const transformedText = text
-    .slice(0, -1)
-    .split("")
-    .map(() => getRandomLetter())
-    .join("");
-
-  // Append the last character
-  return transformedText + lastChar;
-};
 
 const MotionDiv = (props: any) => {
   return <motion.div {...props}></motion.div>;
@@ -70,41 +24,6 @@ type GlitchyTypewriterProps = {
   [key: string]: unknown;
 };
 
-const GlitchyTypewriter: React.FC<GlitchyTypewriterProps> = ({ text, delay, ...props }) => {
-  const [currentText, setCurrentText] = useState<string>("");
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        const nextIndex = currentIndex + 1;
-        const substring = text.slice(0, nextIndex);
-        const transformed = gargledText(substring);
-        setCurrentText(transformed);
-        setCurrentIndex(nextIndex);
-      }, delay);
-
-      return () => clearTimeout(timeout);
-    }
-    if (currentIndex === text.length) {
-      let resultingText = currentText.split("");
-      for (let i = 0; i < currentIndex; i++) {
-        setTimeout(() => {
-          resultingText[i] = text.split("")[i];
-          console.log(text);
-          console.log("resulting Text", resultingText);
-          setCurrentText(resultingText.join(""));
-        }, i * 60);
-      }
-    }
-  }, [currentIndex, text, delay]);
-
-  return (
-    <motion.p className="typewriter" {...props}>
-      {currentText}
-    </motion.p>
-  );
-};
 const Home = () => {
   useEffect(() => {
     const lenis = new Lenis({
@@ -124,7 +43,7 @@ const Home = () => {
     requestAnimationFrame(raf);
   }, []);
   return (
-    <div className={"page-container px-14  w-screen h-screen selection:bg-amber-300 "}>
+    <div className={"page-container px-14  w-screen h-screen selection:bg-amber-300 "} id="page-wrapper">
       <Header />
       <div className={"grid grid-cols-2 w-screen gap-9 "}>
         <div id={"col-1"}>
@@ -145,38 +64,34 @@ const Home = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           clas
         >
-          <div className="text-container">
-            <div id={"col-2"}>
-              <GlitchyTypewriter
-                text={"Hello, World!"}
-                delay={80}
-                className={`text-8xl pt-16 px-9 pl-12 ${spaceGrotesk.className}`}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-              <p className={"pt-5 text-2xl leading-relaxed  pr-44 px-14"}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet enim eget magna pretium
-                tristique. In tincidunt mi nec enim gravida, ut dictum arcu tincidunt. Praesent eget pretium massa, et
-                laoreet sem. Aliquam blandit imperdiet erat in finibus. Quisque iaculis libero nisl, elementum varius
-                lectus finibus vitae. Mauris nec ligula mollis, pharetra tellus sed, ornare purus. Nam quis ex vitae
-                nisi suscipit dictum et et lectus. Donec a tincidunt felis. Integer at pulvinar dolor. Pellentesque
-                habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tristique,
-                diam id feugiat vestibulum, risus nisl maximus est, vel tincidunt risus ligula eget urna. Vivamus
-                maximus, felis sed tincidunt lobortis, velit purus congue arcu, sit amet faucibus urna massa et odio.{" "}
-                <br />
-                <br />
-                Integer eget elit elit. Nullam sed tellus nisl. Nullam vel ornare dolor. Fusce eu pharetra metus. Etiam
-                vitae lorem elit. Aliquam nec consequat leo. Quisque ultricies leo a ipsum accumsan tempus. Nam non
-                bibendum ante. Integer sit amet tincidunt metus. Praesent dignissim, enim eu euismod tincidunt, elit
-                lacus rutrum libero, sit amet tincidunt ante nulla a felis. Vestibulum hendrerit urna lorem, nec aliquam
-                dolor porta ut. Phasellus rutrum nisl eu libero tincidunt, id eleifend massa feugiat. In eu purus dictum
-                nisi tincidunt laoreet nec vitae turpis. Mauris eu fringilla lectus, at feugiat mi. Praesent aliquam
-                maximus libero, fringilla suscipit mauris cursus eu. Nulla tortor augue, rutrum condimentum tortor
-                vitae, pellentesque congue risus. Cras ac arcu id lacus luctus ultrices. Curabitur ut sollicitudin
-                risus.
-              </p>
-            </div>
+          <div id={"col-2"}>
+            <GlitchyTypewriter
+              text={"Hello, World!"}
+              delay={80}
+              className={`text-8xl pt-16 px-9 pl-12 font-['Space_Grotesk']`}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+            <p className={"pt-5 text-2xl leading-relaxed  pr-44 px-14"}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet enim eget magna pretium
+              tristique. In tincidunt mi nec enim gravida, ut dictum arcu tincidunt. Praesent eget pretium massa, et
+              laoreet sem. Aliquam blandit imperdiet erat in finibus. Quisque iaculis libero nisl, elementum varius
+              lectus finibus vitae. Mauris nec ligula mollis, pharetra tellus sed, ornare purus. Nam quis ex vitae nisi
+              suscipit dictum et et lectus. Donec a tincidunt felis. Integer at pulvinar dolor. Pellentesque habitant
+              morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tristique, diam id
+              feugiat vestibulum, risus nisl maximus est, vel tincidunt risus ligula eget urna. Vivamus maximus, felis
+              sed tincidunt lobortis, velit purus congue arcu, sit amet faucibus urna massa et odio. <br />
+              <br />
+              Integer eget elit elit. Nullam sed tellus nisl. Nullam vel ornare dolor. Fusce eu pharetra metus. Etiam
+              vitae lorem elit. Aliquam nec consequat leo. Quisque ultricies leo a ipsum accumsan tempus. Nam non
+              bibendum ante. Integer sit amet tincidunt metus. Praesent dignissim, enim eu euismod tincidunt, elit lacus
+              rutrum libero, sit amet tincidunt ante nulla a felis. Vestibulum hendrerit urna lorem, nec aliquam dolor
+              porta ut. Phasellus rutrum nisl eu libero tincidunt, id eleifend massa feugiat. In eu purus dictum nisi
+              tincidunt laoreet nec vitae turpis. Mauris eu fringilla lectus, at feugiat mi. Praesent aliquam maximus
+              libero, fringilla suscipit mauris cursus eu. Nulla tortor augue, rutrum condimentum tortor vitae,
+              pellentesque congue risus. Cras ac arcu id lacus luctus ultrices. Curabitur ut sollicitudin risus.
+            </p>
           </div>
         </MotionDiv>
       </div>
@@ -246,4 +161,3 @@ const Emoji = (props: { label?: string; symbol: string }) => {
 };
 
 export default Home;
-export { Typewriter, GlitchyTypewriter, spaceGrotesk };

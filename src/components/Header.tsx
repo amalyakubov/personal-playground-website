@@ -8,9 +8,7 @@ export const Header = () => {
   return (
     <>
       <header
-        className={
-          "flex  justify-between text-xl py-8 p-9 border-4 border-t-0 border-black mb-20"
-        }
+        className={"flex rounded-lg justify-between text-xl py-8 p-9 border-4 border-t-0 border-black mb-20 bg-black"}
       >
         <p className={"pr-14 font-bold"}>WOO</p>
         <ol className={"flex flex-row gap-9"}>
