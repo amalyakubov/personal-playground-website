@@ -37,6 +37,11 @@ p {
     font-family: "Geist";
 }
 
+html,
+:root {
+    height: auto;
+}
+
 /* Add this new utility class */
 .text-container {
     background-color: var(--background);
