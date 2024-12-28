@@ -13,6 +13,7 @@ import image2 from "../../public/assets/images/melloo-KYM3UF3C-eg-unsplash.jpg";
 import image3 from "../../public/assets/images/katt-galvan-iP1iaQqOTNw-unsplash.jpg";
 import image4 from "../../public/assets/images/milin-john-_3kCOGsSjVQ-unsplash.jpg";
 import { Space_Grotesk } from "next/font/google";
+import { Hero } from "@/components/Hero";
 
 const MotionDiv = (props: any) => {
   return <motion.div {...props}></motion.div>;
@@ -44,6 +45,7 @@ const Home = () => {
   return (
     <div className={"page-container px-14  w-screen h-screen selection:bg-amber-300 "} id="page-wrapper">
       <Header />
+      <Hero />
       <div className={"grid grid-cols-2 w-screen gap-9 "}>
         <div id={"col-1"}>
           <MotionDiv
