@@ -2,12 +2,10 @@
 import Image from "next/image";
 import heroBanner from "../../public/assets/images/tanya-prodaan-63g0rwti9uU-unsplash.jpg";
 import { Header } from "@/components/Header";
-import Lenis from "lenis";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Footer } from "@/components/Footer";
 import { GlitchyTypewriter } from "@/components/Typewriter";
-import { DropdownMenu } from "@/components/DropdownMenu";
 import image1 from "../../public/assets/images/thom-bradley-0N5YRJgb0js-unsplash.jpg";
 import image2 from "../../public/assets/images/melloo-KYM3UF3C-eg-unsplash.jpg";
 import image3 from "../../public/assets/images/katt-galvan-iP1iaQqOTNw-unsplash.jpg";
@@ -26,22 +24,6 @@ type GlitchyTypewriterProps = {
 };
 
 const Home = () => {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-    });
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-  }, []);
   return (
     <div className={"page-container px-14  w-screen h-screen selection:bg-amber-300 "} id="page-wrapper">
       <Header />
