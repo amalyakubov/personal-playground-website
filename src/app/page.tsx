@@ -25,7 +25,7 @@ type GlitchyTypewriterProps = {
 };
 
 const Home = () => {
-  const [theme, setTheme] = useState<string | null>("dark");
+  const [theme, setTheme] = useState<string>("dark");
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   });
