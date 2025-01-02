@@ -10,7 +10,7 @@ type DropDownProps = {
 };
 
 const DropDown = ({ title, content }: DropDownProps) => {
-  const [dropDownIsOpen, setDropDownIsOpen] = useState(false);
+  const [dropDownIsOpen, setDropDownIsOpen] = useState<boolean>(false);
 
   return (
     <div className="w-full">
@@ -38,7 +38,7 @@ const Services = () => {
         {/* Main content */}
         <div className="relative">
           <h2 className="text-8xl backdrop-blur relative inline-block cursor-pointer hover:opacity-80 transition-opacity">
-            <span className="inline-block">Hello services!</span>
+            <span className="inline-block cursor-text">Hello services!</span>
             <span className="absolute bottom-[-8px] left-0 w-[100%] h-[5px] bg-current"></span>
           </h2>
           <div className="page-list-container pt-9 mt-2 text-6xl px-9 pb-9">

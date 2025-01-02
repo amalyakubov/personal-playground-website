@@ -1,8 +1,5 @@
 import { Hero } from "./Hero";
 import Link from "next/link";
-type HeaderProps = {
-  children: Array<React.ReactElement>;
-};
 
 export const Header = () => {
   return (
