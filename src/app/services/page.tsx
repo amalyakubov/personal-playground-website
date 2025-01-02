@@ -34,8 +34,6 @@ const Services = () => {
       {/* Wrapper for entire page */}
       <Header />
       <main className="flex-1 px-9 pt-9 backdrop-blur-md overflow-y-auto">
-        {" "}
-        {/* Main content */}
         <div className="relative">
           <h2 className="text-8xl backdrop-blur relative inline-block cursor-pointer hover:opacity-80 transition-opacity">
             <span className="inline-block cursor-text">Hello services!</span>
