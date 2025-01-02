@@ -2,53 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --grid-color: rgba(0, 0, 0, 0.1);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
+    /* Define custom properties at the base layer */
     :root {
-        --background: #070a0d;
-        --foreground: #ededed;
-        --grid-color: rgba(255, 255, 255, 0.05);
+        --background: theme(colors.white);
+        --foreground: theme(colors.neutral.900);
+        --grid-color: rgba(0, 0, 0, 0.1); /* Increased opacity to 20% */
     }
-    p,
-    h {
-        color: #e7edf2d;
+
+    /* Dark mode custom properties */
+    :root[data-theme="dark"] {
+        --background: #242423;
+        --foreground: theme(colors.gray.100);
+        --grid-color: rgba(255, 255, 255, 0.04); /* Increased opacity to 15% */
+    }
+
+    /* Base styles */
+    body {
+        @apply min-h-screen overflow-x-hidden font-sans text-[var(--foreground)] bg-[var(--background)];
+        background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+            linear-gradient(to right, var(--grid-color) 1px, var(--background) 1px);
+        background-size: 50px 50px;
+    }
+
+    /* Selection styles */
+    ::selection {
+        @apply bg-amber-300 text-black;
     }
 }
 
-::selection {
-    color: black;
-    background-color: #fcd34d;
-}
-
-body {
-    color: var(--foreground);
-    background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
-        linear-gradient(to right, var(--grid-color) 1px, var(--background) 1px);
-    background-size: 50px 50px;
-}
-
-p {
-    font-family: "Geist";
-}
-
-html,
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* Add this new utility class */
-.text-container {
-    background-color: var(--background);
-    position: relative;
-    z-index: 1;
+@layer components {
+    .text-container {
+        @apply bg-[var(--background)] relative z-10;
+    }
 }
 
 @layer utilities {

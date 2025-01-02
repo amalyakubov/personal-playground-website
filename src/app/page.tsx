@@ -26,9 +26,12 @@ type GlitchyTypewriterProps = {
 
 const Home = () => {
   const [theme, setTheme] = useState<string | null>("dark");
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  });
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <div className={"page-container px-14 w-screen h-screen selection:bg-amber-300 "} id="page-wrapper">
+      <div className={"page-container px-14 w-screen h-screen selection:bg-amber-300 font-['Geist']"} id="page-wrapper">
         <Header />
         <Hero />
         <div className={"grid grid-cols-2 w-screen gap-9 "}>

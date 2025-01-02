@@ -1,7 +1,10 @@
+import { ThemeContext } from "@/contexts/ThemeContext";
 import { Hero } from "./Hero";
 import Link from "next/link";
+import { useContext } from "react";
 
 export const Header = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
   return (
     <>
       <header
@@ -48,6 +51,17 @@ export const Header = () => {
           <a className="relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-white after:left-0  after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:bottom-[-4px] after:duration-150 after:ease-in-out">
             {"{Sign Up}"}
           </a>
+          <button
+            onClick={() => {
+              if (theme === "dark") {
+                setTheme("light");
+              } else if (theme === "light") {
+                setTheme("dark");
+              }
+            }}
+          >
+            Toggle {theme == "dark" ? "light" : "dark"} theme
+          </button>
         </div>
       </header>
     </>
