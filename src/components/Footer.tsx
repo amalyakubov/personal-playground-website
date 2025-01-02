@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import whiteLogo from "../../public/assets/icons/github-mark-white.png";
 import blackLogo from "../../public/assets/icons/github-mark.png";
-import { ThemeContext } from "@/app/page";
+import { ThemeContext } from "@/contexts/ThemeContext";
 
 const Footer = () => {
   const themeContext = useContext(ThemeContext);

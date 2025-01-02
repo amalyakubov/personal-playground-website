@@ -10,9 +10,9 @@ import image1 from "../../public/assets/images/thom-bradley-0N5YRJgb0js-unsplash
 import image2 from "../../public/assets/images/melloo-KYM3UF3C-eg-unsplash.jpg";
 import image3 from "../../public/assets/images/katt-galvan-iP1iaQqOTNw-unsplash.jpg";
 import image4 from "../../public/assets/images/milin-john-_3kCOGsSjVQ-unsplash.jpg";
-import { Space_Grotesk } from "next/font/google";
 import { Hero } from "@/components/Hero";
 import { useContext } from "react";
+import { ThemeContext } from "@/contexts/ThemeContext";
 
 const MotionDiv = (props: any) => {
   return <motion.div {...props}></motion.div>;
@@ -23,16 +23,6 @@ type GlitchyTypewriterProps = {
   delay: number;
   [key: string]: unknown;
 };
-
-type ThemeContextType = {
-  theme: string | null;
-  setTheme: (theme: string) => void;
-};
-
-const ThemeContext = createContext<ThemeContextType>({
-  theme: "dark",
-  setTheme: () => {},
-});
 
 const Home = () => {
   const [theme, setTheme] = useState<string | null>("dark");
@@ -159,4 +149,3 @@ const Emoji = (props: { label?: string; symbol: string }) => {
 };
 
 export default Home;
-export { ThemeContext };
