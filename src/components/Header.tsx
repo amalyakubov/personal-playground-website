@@ -59,8 +59,9 @@ export const Header = () => {
                 setTheme("dark");
               }
             }}
+            className={"pl-9"}
           >
-            Toggle {theme == "dark" ? "light" : "dark"} theme
+            Toggle {theme == "dark" ? "☀️" : "🌙"}
           </button>
         </div>
       </header>
