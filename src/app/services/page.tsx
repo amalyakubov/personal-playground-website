@@ -15,7 +15,7 @@ const DropDown = ({ title, content }: DropDownProps) => {
 
   return (
     // Removed card styling, using simple div container
-    <div className="border-b border-neutral-700 py-6">
+    <div className="border-b border-neutral-700 py-6 transition-all duration-300">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex justify-between items-center w-full text-left"
@@ -25,16 +25,26 @@ const DropDown = ({ title, content }: DropDownProps) => {
           {title}
         </h3>
         {/* Simple +/- indicator */}
-        <span className="text-3xl text-neutral-500 transform transition-trans form duration-200">
+        <span className="text-3xl text-neutral-500 transform transition-trans form duration-200 cursor-pointer">
           {isOpen ? "−" : "+"}
         </span>
       </button>
       {/* Content revealed below */}
-      {isOpen && (
-        <div className="mt-4 text-neutral-300 text-lg leading-relaxed pr-8">
+      {
+        <div
+          className="mt-4 text-neutral-300 text-lg leading-relaxed pr-8"
+          style={{
+            maxHeight: isOpen ? "1000px" : "0",
+            overflow: "hidden",
+            transitionDelay: "0",
+            transition: isOpen
+              ? "max-height 0.2s ease-in"
+              : "max-height 0.2s ease-out",
+          }}
+        >
           {content}
         </div>
-      )}
+      }
     </div>
   );
 };
