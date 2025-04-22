@@ -23,7 +23,7 @@ interface ThemeProviderProps {
 // Create the provider component
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   // Basic theme state (e.g., 'light' or 'dark') - you might want to enhance this later
-  const [theme, setTheme] = useState<string>("light"); // Default theme
+  const [theme, setTheme] = useState<string>("dark"); // Default theme
 
   // Memoize the context value to prevent unnecessary re-renders
   const value = useMemo(

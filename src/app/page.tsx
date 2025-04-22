@@ -29,7 +29,7 @@ type ThemeContextType = {
   setTheme: (theme: string) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType>({
+export const ThemeContext = createContext<ThemeContextType>({
   theme: "dark",
   setTheme: () => {},
 });
@@ -204,4 +204,3 @@ const Emoji = (props: { label?: string; symbol: string }) => {
 };
 
 export default Home;
-export { ThemeContext };

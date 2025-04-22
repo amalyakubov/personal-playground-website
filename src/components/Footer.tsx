@@ -1,18 +1,10 @@
 import { useContext } from "react";
 import whiteLogo from "../../public/assets/icons/github-mark-white.png";
 import blackLogo from "../../public/assets/icons/github-mark.png";
-import { ThemeContext } from "@/context/ThemeContext";
 // Placeholder icons - replace with actual icons/components later
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
-  const themeContext = useContext(ThemeContext);
-
-  if (!themeContext) {
-    return null;
-  }
-
-  const { theme } = themeContext; // Removed setTheme as it wasn't used
   const currentYear = new Date().getFullYear();
 
   // Define reusable link styles
