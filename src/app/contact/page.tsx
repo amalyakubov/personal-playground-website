@@ -151,7 +151,7 @@ const Contact = () => {
                   e.preventDefault();
                   console.log(contactForm);
                 }}
-                className="w-full px-6 py-3 bg-amber-400 text-black font-semibold text-lg hover:text-black focus:outline-hidden hover:shadow-[10px_10px_0px_rgba(255,255,255,1)] transition-all duration-200"
+                className="w-full px-6 py-3 bg-amber-400 text-black font-semibold text-lg hover:text-black focus:outline-hidden hover:shadow-[10px_10px_1px_rgba(255,255,255,1)] transition-all duration-200"
               >
                 SEND
               </button>
