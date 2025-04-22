@@ -4,60 +4,90 @@ import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
+// Re-added DropDown component structure
 type DropDownProps = {
   title: string;
   content: string;
 };
 
 const DropDown = ({ title, content }: DropDownProps) => {
-  const [dropDownIsOpen, setDropDownIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <div className="w-full">
-      <div
-        onClick={() => setDropDownIsOpen(!dropDownIsOpen)}
-        className="text-6xl backdrop-blur relative inline-block cursor-pointer hover:opacity-80 transition-opacity"
+    // Removed card styling, using simple div container
+    <div className="border-b border-neutral-700 py-6">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex justify-between items-center w-full text-left"
       >
-        <span className="inline-block ">{title}</span>
-        <span className="absolute bottom-[-8px] left-0 w-[100%] h-[5px] bg-current"></span>
-      </div>
-      {dropDownIsOpen ? (
-        <div className="flex flex-wrap max-w-[45vw] pt-4 text-4xl cursor-text select-text pb-4">{content}</div>
-      ) : null}
+        {/* Use a bolder/larger font for the title */}
+        <h3 className="text-2xl md:text-3xl font-semibold hover:text-amber-400 transition-colors">
+          {title}
+        </h3>
+        {/* Simple +/- indicator */}
+        <span className="text-3xl text-neutral-500 transform transition-trans form duration-200">
+          {isOpen ? "−" : "+"}
+        </span>
+      </button>
+      {/* Content revealed below */}
+      {isOpen && (
+        <div className="mt-4 text-neutral-300 text-lg leading-relaxed pr-8">
+          {content}
+        </div>
+      )}
     </div>
   );
 };
 
 const Services = () => {
+  // Using the photography-specific services data
+  const services = [
+    {
+      title: "Portrait Photography",
+      content:
+        "Capturing stunning individual, couple, or family portraits that tell your unique story. We create timeless images in studio or on location, focusing on authentic moments and beautiful light.",
+    },
+    {
+      title: "Event Coverage",
+      content:
+        "Documenting your special events, from weddings and parties to corporate functions and conferences. We blend into the background to capture candid moments and key highlights professionally.",
+    },
+    {
+      title: "Commercial & Product",
+      content:
+        "Creating high-impact imagery for your brand. We specialize in product photography, lifestyle shots, and commercial campaigns that elevate your marketing and connect with your audience.",
+    },
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col border-black border-2 border-t-0">
-      {/* Wrapper for entire page */}
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)]">
       <Header />
-      <main className="flex-1 px-9 pt-9 backdrop-blur-md overflow-y-auto">
-        <div className="relative">
-          <h2 className="text-8xl backdrop-blur relative inline-block cursor-pointer hover:opacity-80 transition-opacity">
-            <span className="inline-block cursor-text">Hello services!</span>
-            <span className="absolute bottom-[-8px] left-0 w-[100%] h-[5px] bg-current"></span>
-          </h2>
-          <div className="page-list-container pt-9 mt-2 text-6xl px-9 pb-9">
-            <ol className="flex flex-col gap-[15px] w-max">
+      {/* Reverted to simpler main layout, removed grid/container */}
+      <main className="flex-1 px-6 md:px-12 lg:px-24 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto">
+          {/* Main Heading */}
+          <div className="mb-12 md:mb-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Our Services
+            </h1>
+            <p className="text-lg md:text-xl text-neutral-400">
+              Explore the range of professional photography services we offer.
+            </p>
+          </div>
+
+          {/* Accordion List */}
+          <div className="space-y-4">
+            {services.map((service) => (
               <DropDown
-                title="Web Development"
-                content="Lorem ipsum odor amet, consectetuer adipiscing elit. Libero diam efficitur tellus est, risus orci vitae quam. Magnis duis efficitur; amet mauris sit montes. Eu mauris sollicitudin ut urna habitant malesuada. Erat condimentum lacus, posuere lobortis mus morbi sed. Quis condimentum tellus dolor arcu cursus mauris tristique nullam interdum. Cursus egestas venenatis maximus interdum ante efficitur."
+                key={service.title}
+                title={service.title}
+                content={service.content}
               />
-              <DropDown
-                title="Deployment"
-                content="Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique praesent dictum integer nec, tristique porta elit donec. Tempus porta adipiscing neque hac pulvinar penatibus penatibus tincidunt. Vivamus sagittis nisi metus duis semper, egestas duis nisi. Nam morbi cras condimentum bibendum ligula himenaeos. Odio ridiculus curae fames condimentum ultrices vivamus tempus sollicitudin. Habitant ipsum finibus ultrices luctus, justo etiam litora class. Etiam imperdiet fringilla massa non pretium eu praesent sem. In aliquet vel maximus efficitur integer sodales ultricies."
-              />
-              <DropDown
-                title="UI Design"
-                content="Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique praesent dictum integer nec, tristique porta elit donec. Tempus porta adipiscing neque hac pulvinar penatibus penatibus tincidunt. Vivamus sagittis nisi metus duis semper, egestas duis nisi. Nam morbi cras condimentum bibendum ligula himenaeos. Odio ridiculus curae fames condimentum ultrices vivamus tempus sollicitudin. Habitant ipsum finibus ultrices luctus, justo etiam litora class. Etiam imperdiet fringilla massa non pretium eu praesent sem. In aliquet vel maximus efficitur integer sodales ultricies."
-              />
-            </ol>
+            ))}
           </div>
         </div>
       </main>
-      <Footer /> {/* Footer will now stick to bottom */}
+      <Footer />
     </div>
   );
 };

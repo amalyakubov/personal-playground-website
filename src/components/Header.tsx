@@ -1,4 +1,3 @@
-import { Hero } from "./Hero";
 import Link from "next/link";
 
 export const Header = () => {
@@ -6,49 +5,43 @@ export const Header = () => {
     <>
       <header
         className={
-          "flex rounded-lg text-white justify-between text-xl py-8 p-9 border-4 border-t-0 border-black bg-black"
+          "sticky top-0 z-50 flex items-center justify-beetwen text-xl py-6 px-9 border-b border-white/10 bg-black/70 backdrop-blur-md text-neutral-200"
         }
       >
-        <p className={"pr-14 font-bold"}>WOO</p>
-        <ol className={"flex flex-row gap-9"}>
-          <li>
-            <Link
-              className="relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:duration-150 after:ease-in-out"
-              href={"./"}
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:duration-150 after:ease-in-out"
-              href={"/services"}
-            >
-              Our Services
-            </Link>
-          </li>
-          <li>
-            <a className="relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:duration-150 after:ease-in-out">
-              About Us
-            </a>
-          </li>
-          <li>
-            <a className="relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:duration-150 after:ease-in-out">
-              Projects
-            </a>
-          </li>
-          <li className="relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:duration-150 after:ease-in-out">
-            Contact Us
-          </li>
-        </ol>
-        <div className={"flex flex-row gap-3 pl-9"}>
-          <a className="relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-white after:left-0 after:bottom-[-4px] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:duration-150 after:ease-in-out">
-            {"{Login}"}
-          </a>
-          <a className="relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-white after:left-0  after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:bottom-[-4px] after:duration-150 after:ease-in-out">
-            {"{Sign Up}"}
-          </a>
-        </div>
+        <Link
+          href={"./"}
+          className={
+            "pr-14 font-bold text-2xl hover:text-white transition-colors"
+          }
+        >
+          WOO
+        </Link>
+        <nav>
+          <ol className={"pl-20 flex flex-row items-center gap-8 pr-9"}>
+            <li>
+              <Link
+                className="relative pb-1 text-neutral-300 hover:text-white transition-colors after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:left-0 after:bottom-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-center after:duration-200 after:ease-in-out"
+                href={"./"}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="relative pb-1 text-neutral-300 hover:text-white transition-colors after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:left-0 after:bottom-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-center after:duration-200 after:ease-in-out"
+                href={"/services"}
+              >
+                Our Services
+              </Link>
+            </li>
+          </ol>
+        </nav>
+        <Link
+          href={"/contact"}
+          className="relative pb-1 text-neutral-300 hover:text-white transition-colors after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:left-0 after:bottom-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-center after:duration-200 after:ease-in-out"
+        >
+          Contact Us
+        </Link>
       </header>
     </>
   );
