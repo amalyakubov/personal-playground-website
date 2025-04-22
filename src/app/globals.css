@@ -10,13 +10,14 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #070a0d;
-        --foreground: #ededed;
-        --grid-color: rgba(255, 255, 255, 0.05);
+        --background: #0f100e;
+        --foreground: #ECDFCC;
+        --grid-color: rgba(0, 0, 0, 0.05);
     }
+
     p,
     h {
-        color: #e7edf2d;
+        color: #e7edf2;
     }
 }
 
@@ -32,6 +33,14 @@ body {
     background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
         linear-gradient(to right, var(--grid-color) 1px, var(--background) 1px);
     background-size: 50px 50px;
+    padding: 0;
+    margin: 0;
+}
+
+:root,
+html {
+    padding: 0;
+    margin: 0;
 }
 
 p {
@@ -55,4 +64,14 @@ body {
     .text-balance {
         text-wrap: balance;
     }
+}
+
+.image-container-2nd {
+    grid-template-rows: 30vh 30vh;
+}
+
+.image-container-2nd img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }

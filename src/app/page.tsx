@@ -38,10 +38,10 @@ const Home = () => {
   const [theme, setTheme] = useState<string | null>("dark");
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <div className={"page-container px-14 w-screen h-screen selection:bg-amber-300 "} id="page-wrapper">
+      <div className={"page-container w-screen selection:bg-amber-300 "} id="page-wrapper">
         <Header />
         <Hero />
-        <div className={"grid grid-cols-2 w-screen gap-9 "}>
+        <div className={"grid grid-cols-2 w-screen gap-9  px-[5vw]"}>
           <div id={"col-1"}>
             <MotionDiv
               initial={{ opacity: 0, x: -300 }}
@@ -51,7 +51,7 @@ const Home = () => {
                 scale: 1.03,
               }}
             >
-              <Image src={heroBanner} alt={"asdasd"} className={"pt-16 size-12/12"} />
+              <Image src={heroBanner} alt={"asdasd"} className={"pt-16 h-[900px] object-cover object-center "} />
             </MotionDiv>
           </div>
           <MotionDiv
@@ -68,26 +68,15 @@ const Home = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               />
-              <p className={"pt-5 text-2xl leading-relaxed  pr-44 px-14"}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent imperdiet enim eget magna pretium
-                tristique. In tincidunt mi nec enim gravida, ut dictum arcu tincidunt. Praesent eget pretium massa, et
-                laoreet sem. Aliquam blandit imperdiet erat in finibus. Quisque iaculis libero nisl, elementum varius
-                lectus finibus vitae. Mauris nec ligula mollis, pharetra tellus sed, ornare purus. Nam quis ex vitae
-                nisi suscipit dictum et et lectus. Donec a tincidunt felis. Integer at pulvinar dolor. Pellentesque
-                habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tristique,
-                diam id feugiat vestibulum, risus nisl maximus est, vel tincidunt risus ligula eget urna. Vivamus
-                maximus, felis sed tincidunt lobortis, velit purus congue arcu, sit amet faucibus urna massa et odio.{" "}
-                <br />
-                <br />
-                Integer eget elit elit. Nullam sed tellus nisl. Nullam vel ornare dolor. Fusce eu pharetra metus. Etiam
-                vitae lorem elit. Aliquam nec consequat leo. Quisque ultricies leo a ipsum accumsan tempus. Nam non
-                bibendum ante. Integer sit amet tincidunt metus. Praesent dignissim, enim eu euismod tincidunt, elit
-                lacus rutrum libero, sit amet tincidunt ante nulla a felis. Vestibulum hendrerit urna lorem, nec aliquam
-                dolor porta ut. Phasellus rutrum nisl eu libero tincidunt, id eleifend massa feugiat. In eu purus dictum
-                nisi tincidunt laoreet nec vitae turpis. Mauris eu fringilla lectus, at feugiat mi. Praesent aliquam
-                maximus libero, fringilla suscipit mauris cursus eu. Nulla tortor augue, rutrum condimentum tortor
-                vitae, pellentesque congue risus. Cras ac arcu id lacus luctus ultrices. Curabitur ut sollicitudin
-                risus.
+              <p className={"pt-5 text-md leading-relaxed  pr-44 px-14"}>
+              We believe photography transcends mere documentation; it is the art of seeing and capturing essence. Like artisans, we meticulously craft each image, focusing on the interplay of light, form, and texture to evoke emotion and narrative. Our approach blends technical mastery with a distinct artistic vision, seeking to reveal the inherent beauty and character within every subject we frame.
+
+Whether capturing the quiet soul of architectural spaces, the subtle atmosphere of an interior, or the abstract elegance found in details often overlooked, our process is both intuitive and considered. We explore unique perspectives and compositions, ensuring the final photographs align perfectly with the intended mood and purpose, creating imagery that resonates with clarity and depth.
+<br />
+<br />
+We chase the ephemeral dance of light and shadow, the fleeting whispers of atmosphere that paint the world anew each moment. The lens becomes an extension of the eye, a conduit for translating the silent poetry of existence into tangible form. Each captured frame is not merely an image, but a distilled memory, a fragment of time held captive in the amber of artistry, inviting contemplation and lingering gaze.
+
+
               </p>
             </div>
           </MotionDiv>
@@ -101,31 +90,27 @@ const Home = () => {
 const GalleryOfImages = () => {
   return (
     <>
-      <p className={"pl-20 text-8xl pb-16 pt-[5vh]"}>
-        We are <i>artisans</i> of fotography
+      <p className={"pl-24 text-8xl py-[7vh]"}>
+        We are <i>artisans</i> of photography
       </p>
-      <div id={"flex-box-container"} className={"flex flex-row pb-20"}>
-        <p className={"text-2xl w-[30vw] leading-relaxed"}>
-          We set sail on this new sea because there is new knowledge to be gained, and new rights to be won, and they
-          must be won and used for the progress of all people. For space science, like nuclear science and all
-          technology, has no conscience of its own. Whether it will become a force for good or ill depends on man, and
-          only if the United States occupies a position of pre-eminence can we help decide whether this new ocean will
-          be a sea of peace or a new terrifying theater of war. I do not say that we should or will go unprotected
-          against the hostile misuse of space any more than we go unprotected against the hostile use of land or sea,
-          but I do say that space can be explored and mastered without feeding the fires of war, without repeating the
-          mistakes that man has made in extending his writ around this globe of ours. There is no strife, no prejudice,
-          no national conflict in outer space as yet. Its hazards are hostile to us all. <br />
-          <br />
-          Its conquest deserves the best of all mankind, and its opportunity for peaceful cooperation may never come
-          again. But why, some say, the Moon? Why choose this as our goal? And they may well ask, why climb the highest
-          mountain? Why, 35 years ago, fly the Atlantic? Why does Rice play Texas? We choose to go to the Moon. We
-          choose to go to the Moon... We choose to go to the Moon in this decade and do the other things, not because
-          they are easy, but because they are hard; because that goal will serve to organize and measure the best of our
-          energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to
-          postpone, and one we intend to win, and the others, too.
+      <div id={"flex-box-container"} className={"flex flex-row pb-20 px-[5vw]"}>
+        <p className={"text-md w-[30vw] leading-relaxed"}>
+        We approach photography not merely as a service, but as a dedicated craft demanding both technical precision and profound artistic sensitivity. Each commission presents an opportunity to delve beneath the surface, to explore the narrative woven into spaces, faces, and fleeting moments. Like artisans of old shaping raw material, we meticulously sculpt with light and shadow, composition and perspective, seeking always to reveal unseen beauty and translate nuanced concepts into visually compelling statements that endure beyond temporary trends. 
+        <br/>
+        <br/>
+        Our commitment is to an image that speaks volumes, quietly yet powerfully.
+
+Our process thrives on collaboration and a deep immersion in the subject matter, whether defining the visual identity of a brand, capturing the essential character of an architectural design, or preserving the authentic intimacy of a portrait. We seek to understand the core vision first, then explore unique viewpoints, defining details, and the specific qualities of light that elevate an image from merely competent to truly captivating. This requires patience, intuition, and an unwavering dedication to quality at every stage, from capture through to the final, meticulously refined presentation. The resulting photographs are crafted to not only meet the brief with clarity but also to resonate with enduring authenticity and artistic integrity.
+<br/>
+<br/>
+Ultimately, our purpose extends beyond fulfilling a specific function; we believe the true measure of an artisan photograph lies in its enduring power to engage and resonate. It should serve as more than a record, inviting the viewer into a silent dialogue, offering layers of subtle meaning and aesthetic pleasure that deepen with contemplation and time. We dedicate ourselves to creating images that are not merely seen, but profoundly felt – visual statements that pause the hurried gaze, enrich perception long after the initial viewing, and stand as quiet testaments to the beauty discovered through mindful observation and expert execution.
+
+
+
+
         </p>
 
-        <div className={"grid grid-cols-2 gap-5 pl-20  pr-20 text-2xl w-[80%]  "}>
+        <div className={"grid grid-cols-2 gap-5 pl-20 grid-rows-[min-content_min-content]  pr-20 text-2xl w-[50%]  pb-[10vh] image-container-2nd"}>
           <Image src={image1} alt={"image1"} className={"drop-shadow-2xl shadow-amber-800 col-start-1"} />
           <Image
             src={image2}

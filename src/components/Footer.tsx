@@ -8,7 +8,7 @@ const Footer = () => {
 
   const { theme, setTheme } = themeContext;
   return (
-    <div className={"h-[20vh] pt-20 pb-9 dark:bg-white dark:text-black px-9 rounded-md backdrop-blur-md flex flex-row"}>
+    <div className={"h-min pt-20 pb-9 dark:text-white dark:bg-black px-[5vw] rounded-md backdrop-blur-md flex flex-row"}>
       <div className={"footer-menu w-max pr-9"}>
         <ol className={"flex pt-4"}>
           <li className={"text-4xl"}>Socials</li>
