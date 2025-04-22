@@ -13,6 +13,7 @@ import image4 from "../../public/assets/images/milin-john-_3kCOGsSjVQ-unsplash.j
 import { Space_Grotesk } from "next/font/google";
 import { Hero } from "@/components/Hero";
 import { useContext } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
 
 const MotionDiv = (props: any) => {
   return <motion.div {...props}></motion.div>;
@@ -24,20 +25,9 @@ type GlitchyTypewriterProps = {
   [key: string]: unknown;
 };
 
-type ThemeContextType = {
-  theme: string | null;
-  setTheme: (theme: string) => void;
-};
-
-export const ThemeContext = createContext<ThemeContextType>({
-  theme: "dark",
-  setTheme: () => {},
-});
-
 const Home = () => {
-  const [theme, setTheme] = useState<string | null>("dark");
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme: "dark" }}>
       <div
         className={"page-container w-screen selection:bg-amber-300 "}
         id="page-wrapper"
