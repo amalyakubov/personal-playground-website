@@ -56,7 +56,7 @@ const Contact = () => {
                 name="name"
                 id="name"
                 required
-                className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 text-neutral-100 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors"
+                className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 text-neutral-100 focus:outline-hidden focus:border-white focus:ring-1 focus:ring-white transition-colors"
               />
             </div>
             <div>
@@ -71,7 +71,7 @@ const Contact = () => {
                 name="email"
                 id="email"
                 required
-                className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 text-neutral-100 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors"
+                className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 text-neutral-100 focus:outline-hidden focus:border-white focus:ring-1 focus:ring-white transition-colors"
               />
             </div>
             <div>
@@ -86,7 +86,7 @@ const Contact = () => {
                 name="subject"
                 id="subject"
                 placeholder="Optional"
-                className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 text-neutral-100 placeholder-neutral-600 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors"
+                className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 text-neutral-100 placeholder-neutral-600 focus:outline-hidden focus:border-white focus:ring-1 focus:ring-white transition-colors"
               />
             </div>
             <div>
@@ -101,13 +101,13 @@ const Contact = () => {
                 id="message"
                 rows={5}
                 required
-                className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 text-neutral-100 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors resize-none"
+                className="w-full px-3 py-2 bg-neutral-900 border border-neutral-700 text-neutral-100 focus:outline-hidden focus:border-white focus:ring-1 focus:ring-white transition-colors resize-none"
               ></textarea>
             </div>
             <div>
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-amber-400 text-black font-semibold text-lg hover:text-black focus:outline-none hover:shadow-[10px_10px_0px_rgba(255,255,255,1)] transition-all duration-200"
+                className="w-full px-6 py-3 bg-amber-400 text-black font-semibold text-lg hover:text-black focus:outline-hidden hover:shadow-[10px_10px_0px_rgba(255,255,255,1)] transition-all duration-200"
               >
                 SEND
               </button>
