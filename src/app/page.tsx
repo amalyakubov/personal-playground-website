@@ -3,98 +3,86 @@ import Image from "next/image";
 import heroBanner from "../../public/assets/images/tanya-prodaan-63g0rwti9uU-unsplash.jpg";
 import { Header } from "@/components/Header";
 import { motion } from "framer-motion";
-import { createContext, useEffect, useState } from "react";
 import { Footer } from "@/components/Footer";
 import { GlitchyTypewriter } from "@/components/Typewriter";
 import image1 from "../../public/assets/images/thom-bradley-0N5YRJgb0js-unsplash.jpg";
 import image2 from "../../public/assets/images/melloo-KYM3UF3C-eg-unsplash.jpg";
 import image3 from "../../public/assets/images/katt-galvan-iP1iaQqOTNw-unsplash.jpg";
 import image4 from "../../public/assets/images/milin-john-_3kCOGsSjVQ-unsplash.jpg";
-import { Space_Grotesk } from "next/font/google";
 import { Hero } from "@/components/Hero";
-import { useContext } from "react";
-import { ThemeContext } from "@/context/ThemeContext";
 
 const MotionDiv = (props: any) => {
   return <motion.div {...props}></motion.div>;
 };
 
-type GlitchyTypewriterProps = {
-  text: string;
-  delay: number;
-  [key: string]: unknown;
-};
-
 const Home = () => {
   return (
-    <ThemeContext.Provider value={{ theme: "dark" }}>
-      <div
-        className={"page-container w-screen selection:bg-amber-300 "}
-        id="page-wrapper"
-      >
-        <Header />
-        <Hero />
-        <div className={"grid grid-cols-2 w-screen gap-9  px-[5vw]"}>
-          <div id={"col-1"}>
-            <MotionDiv
-              initial={{ opacity: 0, x: -300 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              whileHover={{
-                scale: 1.03,
-              }}
-            >
-              <Image
-                src={heroBanner}
-                alt={"asdasd"}
-                className={"pt-16 h-[900px] object-cover object-center "}
-              />
-            </MotionDiv>
-          </div>
+    <div
+      className={"page-container w-screen selection:bg-amber-300 "}
+      id="page-wrapper"
+    >
+      <Header />
+      <Hero />
+      <div className={"grid grid-cols-2 w-screen gap-9  px-[5vw]"}>
+        <div id={"col-1"}>
           <MotionDiv
             initial={{ opacity: 0, x: -300 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            whileHover={{
+              scale: 1.03,
+            }}
           >
-            <div id={"col-2"}>
-              <GlitchyTypewriter
-                text={"Hello, World!"}
-                delay={80}
-                className={`text-8xl pt-16 px-9 pl-12 font-['Space_Grotesk']`}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-              <p className={"pt-5 text-md leading-relaxed  pr-44 px-14"}>
-                We believe photography transcends mere documentation; it is the
-                art of seeing and capturing essence. Like artisans, we
-                meticulously craft each image, focusing on the interplay of
-                light, form, and texture to evoke emotion and narrative. Our
-                approach blends technical mastery with a distinct artistic
-                vision, seeking to reveal the inherent beauty and character
-                within every subject we frame. Whether capturing the quiet soul
-                of architectural spaces, the subtle atmosphere of an interior,
-                or the abstract elegance found in details often overlooked, our
-                process is both intuitive and considered. We explore unique
-                perspectives and compositions, ensuring the final photographs
-                align perfectly with the intended mood and purpose, creating
-                imagery that resonates with clarity and depth.
-                <br />
-                <br />
-                We chase the ephemeral dance of light and shadow, the fleeting
-                whispers of atmosphere that paint the world anew each moment.
-                The lens becomes an extension of the eye, a conduit for
-                translating the silent poetry of existence into tangible form.
-                Each captured frame is not merely an image, but a distilled
-                memory, a fragment of time held captive in the amber of
-                artistry, inviting contemplation and lingering gaze.
-              </p>
-            </div>
+            <Image
+              src={heroBanner}
+              alt={"asdasd"}
+              className={"pt-16 h-[900px] object-cover object-center "}
+            />
           </MotionDiv>
         </div>
-        <GalleryOfImages />
+        <MotionDiv
+          initial={{ opacity: 0, x: -300 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          <div id={"col-2"}>
+            <GlitchyTypewriter
+              text={"Hello, World!"}
+              delay={80}
+              className={`text-8xl pt-16 px-9 pl-12 font-['Space_Grotesk']`}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+            <p className={"pt-5 text-md leading-relaxed  pr-44 px-14"}>
+              We believe photography transcends mere documentation; it is the
+              art of seeing and capturing essence. Like artisans, we
+              meticulously craft each image, focusing on the interplay of light,
+              form, and texture to evoke emotion and narrative. Our approach
+              blends technical mastery with a distinct artistic vision, seeking
+              to reveal the inherent beauty and character within every subject
+              we frame. Whether capturing the quiet soul of architectural
+              spaces, the subtle atmosphere of an interior, or the abstract
+              elegance found in details often overlooked, our process is both
+              intuitive and considered. We explore unique perspectives and
+              compositions, ensuring the final photographs align perfectly with
+              the intended mood and purpose, creating imagery that resonates
+              with clarity and depth.
+              <br />
+              <br />
+              We chase the ephemeral dance of light and shadow, the fleeting
+              whispers of atmosphere that paint the world anew each moment. The
+              lens becomes an extension of the eye, a conduit for translating
+              the silent poetry of existence into tangible form. Each captured
+              frame is not merely an image, but a distilled memory, a fragment
+              of time held captive in the amber of artistry, inviting
+              contemplation and lingering gaze.
+            </p>
+          </div>
+        </MotionDiv>
       </div>
-    </ThemeContext.Provider>
+      <GalleryOfImages />
+    </div>
   );
 };
 
@@ -177,19 +165,6 @@ const GalleryOfImages = () => {
       </div>
       <Footer />
     </>
-  );
-};
-
-const Emoji = (props: { label?: string; symbol: string }) => {
-  return (
-    <span
-      className="emoji"
-      role="img"
-      aria-label={props.label ? props.label : ""}
-      aria-hidden={props.label ? "false" : "true"}
-    >
-      {props.symbol}
-    </span>
   );
 };
 

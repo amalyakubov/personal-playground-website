@@ -1,7 +1,3 @@
-import { useContext } from "react";
-import whiteLogo from "../../public/assets/icons/github-mark-white.png";
-import blackLogo from "../../public/assets/icons/github-mark.png";
-// Placeholder icons - replace with actual icons/components later
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
