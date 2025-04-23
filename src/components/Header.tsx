@@ -17,7 +17,7 @@ export const Header = () => {
           WOO
         </Link>
         <nav>
-          <ol className={"pl-20 flex flex-row items-center gap-8 pr-9"}>
+          <ol className={"pl-8 md:pl-20 flex flex-row items-center gap-8 pr-9"}>
             <li>
               <Link
                 className="relative pb-1 text-neutral-300 hover:text-white transition-colors after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:left-0 after:bottom-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-center after:duration-200 after:ease-in-out"
