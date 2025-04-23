@@ -17,86 +17,94 @@ const MotionDiv = (props: any) => {
 
 const Home = () => {
   return (
-    <div
-      className={"page-container w-screen selection:bg-amber-300 "}
-      id="page-wrapper"
-    >
+    <>
       <Header />
-      <Hero />
-      <div className={"grid grid-cols-2 w-screen gap-9  px-[5vw]"}>
-        <div id={"col-1"}>
+      <div
+        className={
+          "page-container w-screen px-9 md:px-0 selection:bg-amber-300 "
+        }
+        id="page-wrapper"
+      >
+        <Hero />
+        <div className={"grid grid-cols-1 md:grid-cols-2 gap-9"}>
+          <div id={"col-1"}>
+            <MotionDiv
+              initial={{ opacity: 0, x: -300 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              whileHover={{
+                scale: 1.03,
+              }}
+            >
+              <Image
+                src={heroBanner}
+                alt={"asdasd"}
+                className={
+                  "pt-16 h-auto md:h-[900px] object-cover object-center "
+                }
+              />
+            </MotionDiv>
+          </div>
           <MotionDiv
             initial={{ opacity: 0, x: -300 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            whileHover={{
-              scale: 1.03,
-            }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <Image
-              src={heroBanner}
-              alt={"asdasd"}
-              className={"pt-16 h-[900px] object-cover object-center "}
-            />
+            <div id={"col-2"}>
+              <GlitchyTypewriter
+                text={"Hello, World!"}
+                delay={80}
+                className={`text-2xl md:text-8xl pt-16 font-['Space_Grotesk']`}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+              <p className={"pt-5 text-md leading-relaxed  md:pr-44"}>
+                We believe photography transcends mere documentation; it is the
+                art of seeing and capturing essence. Like artisans, we
+                meticulously craft each image, focusing on the interplay of
+                light, form, and texture to evoke emotion and narrative. Our
+                approach blends technical mastery with a distinct artistic
+                vision, seeking to reveal the inherent beauty and character
+                within every subject we frame. Whether capturing the quiet soul
+                of architectural spaces, the subtle atmosphere of an interior,
+                or the abstract elegance found in details often overlooked, our
+                process is both intuitive and considered. We explore unique
+                perspectives and compositions, ensuring the final photographs
+                align perfectly with the intended mood and purpose, creating
+                imagery that resonates with clarity and depth.
+                <br />
+                <br />
+                We chase the ephemeral dance of light and shadow, the fleeting
+                whispers of atmosphere that paint the world anew each moment.
+                The lens becomes an extension of the eye, a conduit for
+                translating the silent poetry of existence into tangible form.
+                Each captured frame is not merely an image, but a distilled
+                memory, a fragment of time held captive in the amber of
+                artistry, inviting contemplation and lingering gaze.
+              </p>
+            </div>
           </MotionDiv>
         </div>
-        <MotionDiv
-          initial={{ opacity: 0, x: -300 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <div id={"col-2"}>
-            <GlitchyTypewriter
-              text={"Hello, World!"}
-              delay={80}
-              className={`text-8xl pt-16 px-9 pl-12 font-['Space_Grotesk']`}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
-            <p className={"pt-5 text-md leading-relaxed  pr-44 px-14"}>
-              We believe photography transcends mere documentation; it is the
-              art of seeing and capturing essence. Like artisans, we
-              meticulously craft each image, focusing on the interplay of light,
-              form, and texture to evoke emotion and narrative. Our approach
-              blends technical mastery with a distinct artistic vision, seeking
-              to reveal the inherent beauty and character within every subject
-              we frame. Whether capturing the quiet soul of architectural
-              spaces, the subtle atmosphere of an interior, or the abstract
-              elegance found in details often overlooked, our process is both
-              intuitive and considered. We explore unique perspectives and
-              compositions, ensuring the final photographs align perfectly with
-              the intended mood and purpose, creating imagery that resonates
-              with clarity and depth.
-              <br />
-              <br />
-              We chase the ephemeral dance of light and shadow, the fleeting
-              whispers of atmosphere that paint the world anew each moment. The
-              lens becomes an extension of the eye, a conduit for translating
-              the silent poetry of existence into tangible form. Each captured
-              frame is not merely an image, but a distilled memory, a fragment
-              of time held captive in the amber of artistry, inviting
-              contemplation and lingering gaze.
-            </p>
-          </div>
-        </MotionDiv>
+        <GalleryOfImages />
       </div>
-      <GalleryOfImages />
-    </div>
+    </>
   );
 };
 
 const GalleryOfImages = () => {
   return (
     <>
-      <p className={"pl-24 text-8xl py-[7vh]"}>
+      <p className={"px-[15vw] md:pl-24 text-4xl md:text-8xl py-[7vh]"}>
         We are <i>artisans</i> of photography
       </p>
       <div
         id={"flex-box-container"}
-        className={"flex flex-row pb-20 px-[5vw] pt-9"}
+        className={
+          "flex flex-col md:flex-row pb-20 px-4 md:px-[5vw] pt-9 gap-8 md:gap-0"
+        }
       >
-        <p className={"text-md w-[30vw] leading-relaxed"}>
+        <p className={"text-md w-full md:w-[30vw] leading-relaxed md:pr-8"}>
           We approach photography not merely as a service, but as a dedicated
           craft demanding both technical precision and profound artistic
           sensitivity. Each commission presents an opportunity to delve beneath
@@ -137,31 +145,35 @@ const GalleryOfImages = () => {
 
         <div
           className={
-            "grid grid-cols-2 gap-5 pl-20 grid-rows-[min-content_min-content]  pr-20 text-2xl w-[50%]  pb-[10vh] image-container-2nd"
+            "grid grid-cols-1  md:grid-cols-2 gap-9 w-full md:w-[calc(80%-2rem)] md:pl-8 text-2xl pb-[10vh] image-container-2nd"
           }
         >
           <Image
-            src={image1}
-            alt={"image1"}
-            className={"drop-shadow-2xl shadow-amber-800 col-start-1"}
-          />
-          <Image
-            src={image2}
-            alt={"image2"}
-            className={
-              "flex col-start-2 drop-shadow-2xl object-cover object-center h-full"
-            }
-          />
-          <Image
             src={image3}
             alt={"image3"}
-            className={"col-start-1 drop-shadow-2xl row-start-1 "}
+            className={
+              "drop-shadow-2xl md:col-start-1 md:row-start-1 md:object-contain w-full h-auto object-center"
+            }
           />
           <Image
             src={image4}
             alt={"image4"}
             className={
-              "col-start-2 row-start-1 drop-shadow-2xl h-full object-cover object-center "
+              "drop-shadow-2xl md:col-start-2 md:object-contain md:row-start-1 w-full h-auto object-contain"
+            }
+          />
+          <Image
+            src={image1}
+            alt={"image1"}
+            className={
+              "drop-shadow-2xl shadow-amber-800 md:object-contain md:col-start-1 w-full h-auto object-contain"
+            }
+          />
+          <Image
+            src={image2}
+            alt={"image2"}
+            className={
+              "flex drop-shadow-2xl object-contain object-center md:object-contain md:col-start-2 w-full h-auto"
             }
           />
         </div>

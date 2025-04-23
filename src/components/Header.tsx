@@ -5,13 +5,13 @@ export const Header = () => {
     <>
       <header
         className={
-          "sticky top-0 z-50 flex items-center justify-beetwen text-xl py-6 px-9 border-b border-white/10 bg-black/70 backdrop-blur-md text-neutral-200"
+          "sticky top-0 z-50 flex items-center justify-start text-sm md:text-xl px-9 py-6 md:px-9 border-b border-white/10 bg-black/70 backdrop-blur-md text-neutral-200"
         }
       >
         <Link
           href={"./"}
           className={
-            "pr-14 font-bold text-2xl hover:text-white transition-colors"
+            "md:pr-14 font-bold text-2xl hover:text-white transition-colors"
           }
         >
           WOO
