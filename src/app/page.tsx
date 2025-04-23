@@ -92,7 +92,10 @@ const GalleryOfImages = () => {
       <p className={"pl-24 text-8xl py-[7vh]"}>
         We are <i>artisans</i> of photography
       </p>
-      <div id={"flex-box-container"} className={"flex flex-row pb-20 px-[5vw]"}>
+      <div
+        id={"flex-box-container"}
+        className={"flex flex-row pb-20 px-[5vw] pt-9"}
+      >
         <p className={"text-md w-[30vw] leading-relaxed"}>
           We approach photography not merely as a service, but as a dedicated
           craft demanding both technical precision and profound artistic

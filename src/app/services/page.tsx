@@ -32,17 +32,16 @@ const DropDown = ({ title, content }: DropDownProps) => {
       {/* Content revealed below */}
       {
         <div
-          className="mt-4 text-neutral-300 text-lg leading-relaxed pr-8"
+          // Use grid for smoother height animation
+          className="grid text-neutral-300 text-lg leading-relaxed pr-8 overflow-hidden"
           style={{
-            maxHeight: isOpen ? "1000px" : "0",
-            overflow: "hidden",
-            transitionDelay: "0",
-            transition: isOpen
-              ? "max-height 0.2s ease-in"
-              : "max-height 0.2s ease-out",
+            // Animate grid-template-rows instead of max-height
+            gridTemplateRows: isOpen ? "1fr" : "0fr",
+            transition: "grid-template-rows 0.15s ease-in-out", // Smoother easing and slightly longer duration
           }}
         >
-          {content}
+          {/* Wrap content in an inner div to prevent margin collapse issues */}
+          <div className="overflow-hidden pt-4">{content}</div>
         </div>
       }
     </div>
@@ -80,9 +79,6 @@ const Services = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               Our Services
             </h1>
-            <p className="text-lg md:text-xl text-neutral-400">
-              Explore the range of professional photography services we offer.
-            </p>
           </div>
 
           {/* Accordion List */}
