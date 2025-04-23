@@ -11,6 +11,7 @@ import image3 from "../../public/assets/images/katt-galvan-iP1iaQqOTNw-unsplash.
 import image4 from "../../public/assets/images/milin-john-_3kCOGsSjVQ-unsplash.jpg";
 import { Hero } from "@/components/Hero";
 
+// A motion div component that uses Framer Motion to animate the div with any props passed to it
 const MotionDiv = (props: any) => {
   return <motion.div {...props}></motion.div>;
 };
@@ -53,7 +54,7 @@ const Home = () => {
             <div id={"col-2"}>
               <GlitchyTypewriter
                 text={"Hello, World!"}
-                delay={80}
+                delay={40}
                 className={`text-2xl md:text-8xl pt-16 font-['Space_Grotesk']`}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}

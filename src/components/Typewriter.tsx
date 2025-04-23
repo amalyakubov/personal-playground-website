@@ -29,8 +29,18 @@ const gargledText = (text: string): string => {
   // Append the last character
   return `${transformedText}${lastChar}`;
 };
-const Typewriter = ({ text, delay, ...props }: { text: string; delay: number }) => {
-  const [textToDisplayObject, setTextToDisplayOBject] = useState({ text: "", index: 0 });
+const Typewriter = ({
+  text,
+  delay,
+  ...props
+}: {
+  text: string;
+  delay: number;
+}) => {
+  const [textToDisplayObject, setTextToDisplayOBject] = useState({
+    text: "",
+    index: 0,
+  });
   useEffect(() => {
     if (textToDisplayObject.index < text.length) {
       const timeout = setTimeout(() => {
@@ -49,8 +59,15 @@ const Typewriter = ({ text, delay, ...props }: { text: string; delay: number }) 
   );
 };
 
-const GlitchyTypewriter: React.FC<GlitchyTypewriterProps> = ({ text, delay, ...props }) => {
-  const [textToDisplayObject, setTextToDisplayOBject] = useState({ text: "", index: 0 });
+const GlitchyTypewriter: React.FC<GlitchyTypewriterProps> = ({
+  text,
+  delay,
+  ...props
+}) => {
+  const [textToDisplayObject, setTextToDisplayOBject] = useState({
+    text: "",
+    index: 0,
+  });
 
   useEffect(() => {
     if (textToDisplayObject.index < text.length) {
@@ -77,7 +94,7 @@ const GlitchyTypewriter: React.FC<GlitchyTypewriterProps> = ({ text, delay, ...p
             ...prev,
             text: resultingText.join(""),
           }));
-        }, i * 60);
+        }, i * 30); // Change the factor by which i is multiplied to change the speed of the typewriter
       }
     }
   }, [textToDisplayObject.index, text, delay]);

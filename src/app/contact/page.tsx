@@ -13,8 +13,6 @@ type ContactDetails = {
 };
 
 const Contact = () => {
-  // Example contact details - replace with actual info
-
   const [contactForm, setContactForm] = useState<ContactDetails>({
     name: "",
     email: "",
@@ -55,11 +53,7 @@ const Contact = () => {
         </div>
 
         <div className="w-full max-w-lg">
-          <form
-            action="#" // Replace with your form handling endpoint or service
-            method="POST"
-            className="space-y-6"
-          >
+          <form action="#" method="POST" className="space-y-6">
             <div>
               <label
                 htmlFor="name"
