@@ -83,11 +83,6 @@
     z-index: 1;
   }
 
-
-.image-container-2nd {
-    grid-template-rows: 50vh 50vh;
-}
-
 .image-container-2nd img {
     height: 100%;
     width: 100%;

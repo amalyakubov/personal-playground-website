@@ -69,32 +69,31 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+    <>
       <Header />
-      {/* Reverted to simpler main layout, removed grid/container */}
-      <main className="flex-1 px-6 md:px-12 lg:px-24 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto">
-          {/* Main Heading */}
-          <div className="mb-12 md:mb-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Our Services
-            </h1>
-          </div>
+      <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] md:px-8 md:py-16">
+        <main className="flex-1 px-6 md:px-12 lg:px-24 py-16 md:py-24">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-12 md:mb-16">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                Our Services
+              </h1>
+            </div>
 
-          {/* Accordion List */}
-          <div className="space-y-4">
-            {services.map((service) => (
-              <DropDown
-                key={service.title}
-                title={service.title}
-                content={service.content}
-              />
-            ))}
+            <div className="space-y-4">
+              {services.map((service) => (
+                <DropDown
+                  key={service.title}
+                  title={service.title}
+                  content={service.content}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </main>
-      <Footer />
-    </div>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
 

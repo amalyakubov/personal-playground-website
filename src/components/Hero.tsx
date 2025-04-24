@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <>
       <div
-        className={`pt-16 uppercase text-3xl md:text-7xl font-bold leading-tighter pl-[5vw] pb-9 font-['Space_Grotesk']`}
+        className={`pt-16 uppercase text-3xl md:text-8xl font-bold leading-tighter pl-[5vw] pb-9 font-['Space_Grotesk'] md:pl-[20vw]`}
       >
         <GlitchyTypewriter text={"We are"} delay={5}></GlitchyTypewriter>
         <GlitchyTypewriter

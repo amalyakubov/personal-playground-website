@@ -99,92 +99,94 @@ const Home = () => {
 
 const GalleryOfImages = () => {
   return (
-    <div className="max-w-7xl mx-auto py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
-      <h2
-        className={
-          "text-center text-3xl sm:text-4xl lg:text-6xl mb-10 lg:mb-16"
-        }
-      >
-        We are <i className="font-serif font-normal not-italic">artisans</i> of
-        photography
-      </h2>
-      <div
-        id={"flex-box-container"}
-        className={"flex flex-col lg:flex-row items-start gap-10 lg:gap-16"}
-      >
-        <div className={"w-full lg:w-1/3"}>
-          <p className={"text-base sm:text-lg leading-relaxed mb-6"}>
-            We approach photography not merely as a service, but as a dedicated
-            craft demanding both technical precision and profound artistic
-            sensitivity. Each commission presents an opportunity to delve
-            beneath the surface, to explore the narrative woven into spaces,
-            faces, and fleeting moments. Like artisans of old shaping raw
-            material, we meticulously sculpt with light and shadow, composition
-            and perspective.
-          </p>
-          <p className={"text-base sm:text-lg leading-relaxed mb-6"}>
-            Our commitment is to an image that speaks volumes, quietly yet
-            powerfully. Our process thrives on collaboration and a deep
-            immersion in the subject matter, whether defining the visual
-            identity of a brand, capturing the essential character of an
-            architectural design, or preserving the authentic intimacy of a
-            portrait. We seek to understand the core vision first, then explore
-            unique viewpoints, defining details, and the specific qualities of
-            light that elevate an image from merely competent to truly
-            captivating.
-          </p>
-          <p className={"text-base sm:text-lg leading-relaxed"}>
-            Ultimately, our purpose extends beyond fulfilling a specific
-            function; we believe the true measure of an artisan photograph lies
-            in its enduring power to engage and resonate. It should serve as
-            more than a record, inviting the viewer into a silent dialogue,
-            offering layers of subtle meaning and aesthetic pleasure that deepen
-            with contemplation and time. We dedicate ourselves to creating
-            images that are not merely seen, but profoundly felt.
-          </p>
-        </div>
-
-        <div
+    <>
+      <div className="max-w-7xl mx-auto py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
+        <h2
           className={
-            "grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 w-full lg:w-2/3"
+            "text-center text-3xl sm:text-4xl lg:text-6xl mb-10 lg:mb-16 "
           }
         >
-          <Image
-            src={image3}
-            alt={"Abstract building facade"}
+          We are <i className="font-serif font-normal not-italic">artisans</i>{" "}
+          of photography
+        </h2>
+        <div
+          id={"flex-box-container"}
+          className={"flex flex-col lg:flex-row items-start gap-10 lg:gap-16"}
+        >
+          <div className={"w-full lg:w-1/3"}>
+            <p className={"text-base sm:text-lg leading-relaxed mb-6"}>
+              We approach photography not merely as a service, but as a
+              dedicated craft demanding both technical precision and profound
+              artistic sensitivity. Each commission presents an opportunity to
+              delve beneath the surface, to explore the narrative woven into
+              spaces, faces, and fleeting moments. Like artisans of old shaping
+              raw material, we meticulously sculpt with light and shadow,
+              composition and perspective.
+            </p>
+            <p className={"text-base sm:text-lg leading-relaxed mb-6"}>
+              Our commitment is to an image that speaks volumes, quietly yet
+              powerfully. Our process thrives on collaboration and a deep
+              immersion in the subject matter, whether defining the visual
+              identity of a brand, capturing the essential character of an
+              architectural design, or preserving the authentic intimacy of a
+              portrait. We seek to understand the core vision first, then
+              explore unique viewpoints, defining details, and the specific
+              qualities of light that elevate an image from merely competent to
+              truly captivating.
+            </p>
+            <p className={"text-base sm:text-lg leading-relaxed"}>
+              Ultimately, our purpose extends beyond fulfilling a specific
+              function; we believe the true measure of an artisan photograph
+              lies in its enduring power to engage and resonate. It should serve
+              as more than a record, inviting the viewer into a silent dialogue,
+              offering layers of subtle meaning and aesthetic pleasure that
+              deepen with contemplation and time. We dedicate ourselves to
+              creating images that are not merely seen, but profoundly felt.
+            </p>
+          </div>
+
+          <div
             className={
-              "w-full h-auto object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 aspect-square"
+              "grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 w-full lg:w-2/3"
             }
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-          <Image
-            src={image4}
-            alt={"Minimalist interior design"}
-            className={
-              "w-full h-auto object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 aspect-square"
-            }
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-          <Image
-            src={image1}
-            alt={"Modern architectural lines"}
-            className={
-              "w-full h-auto object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 aspect-square"
-            }
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-          <Image
-            src={image2}
-            alt={"Interior detail with soft light"}
-            className={
-              "w-full h-auto object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 aspect-square"
-            }
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
+          >
+            <Image
+              src={image3}
+              alt={"Abstract building facade"}
+              className={
+                "w-full h-auto object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 aspect-square"
+              }
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            <Image
+              src={image4}
+              alt={"Minimalist interior design"}
+              className={
+                "w-full h-auto object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 aspect-square"
+              }
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            <Image
+              src={image1}
+              alt={"Modern architectural lines"}
+              className={
+                "w-full h-auto object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 aspect-square"
+              }
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            <Image
+              src={image2}
+              alt={"Interior detail with soft light"}
+              className={
+                "w-full h-auto object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 aspect-square"
+              }
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          </div>
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
